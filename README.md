@@ -10,7 +10,7 @@ To quiz the user on their classic rock knowledge.
 
 
 ## Source Code Example:
-![Password Generator Site Source Code]()
+![Classic Rock Quiz]()
 
 ## Built With
 * HTML
