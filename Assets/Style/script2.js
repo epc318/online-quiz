@@ -1,23 +1,24 @@
 
-var scores = document.querySelector("#scores");
+
+var highScore = document.querySelector("#highScores");
 var BackToquiz = document.querySelector("#backBtn");
-var clear = document.querySelector("#clear");
+var clear = document.querySelector("#clearScore");
 
 clear.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 });
 
-var scoresStored = localStorage.getItem("scoresStored")
-scoresStored = JSON.parse(scoresStored);
+var storedScores = localStorage.getItem("storedScores")
+storedScores = JSON.parse(storedScores);
 
-if (scoresStored !== null) {
+if (storedScores !== null) {
 
-    for (var i = 0; i < scoresStored.length; i++) {
+    for (var i = 0; i < storedScores.length; i++) {
 
         var liElement = document.createElement("li");
-        liElement.textContent = scoresStored[i].userInput + " " + scoresStored[i].scores;
+        liElement.textContent = storedScores[i].userText + " " + storedScores[i].score;
         console.log(liElement)
-        scores.appendChild(liElement);
+        highScore.appendChild(liElement);
     }
 };
