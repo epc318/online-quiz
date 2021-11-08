@@ -124,3 +124,27 @@ function compare(event) {
   }
   quizQuestions.appendChild(divEl);
 }
+
+function quizEnd() {
+  quizQuestions.innerHTML = "";
+  timeInt.innerHTML = "";
+
+  var h1El = document.createElement("h1")
+  h1El.setAttribute("id", "h1El");
+  h1El.textContent = "Quiz Over!";
+
+  quizQuestions.appendChild(h1El);
+
+  var pEl = document.createElement("p")
+  pEl.setAttribute("id", "pEl");
+
+  quizQuestions.appendChild(pEl);
+
+  if (intervalSeconds >= 0) {
+      var timeRemaining = intervalSecs;
+      var p2El = document.createElement("p");
+      clearInterval(intervalHold);
+      pEl.textContent = "Your score is: " + timeRemaining;
+
+      quizQuestions.appendChild(p2El);
+  }
