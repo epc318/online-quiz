@@ -1,3 +1,4 @@
+//created variable for question array
 var questions = [
   {
     title: "What instrument does Richard Wakeman Play?",
@@ -44,3 +45,33 @@ var questions = [
 },
 
 ];
+
+var score = 0;
+var quizIndex = 0;
+
+var intervalSecs = 75;
+var intervalHold = 0;
+var intervalPen = 5;
+
+var timeInt = document.querySelector("#timeInt");
+var quizQuestions = document.querySelector("#quizQuestions");
+
+
+var startInt = document.querySelector(".start-btn");
+
+// click listenter to start timer when button is clicked
+startInt.addEventListener("click", function () {
+  if (intervalHold === 0) {
+      intervalHold = setInterval(function () {
+          intervalSecs--;
+          timeInt.textContent = "Time:" + intervalSecs;
+
+          if (intervalSecs <= 0) {
+              clearInterval(intervalHold);
+              quizOver();
+              timeInt.textContent = "Time's up!";
+          }
+      }, 1000);
+  }
+  render(quizIndex);
+});
