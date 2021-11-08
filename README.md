@@ -10,7 +10,7 @@ To quiz the user on their classic rock knowledge.
 https://epc318.github.io/online-quiz/
 
 ## Source Code Example:
-![Classic Rock Quiz](https://github.com/epc318/online-quiz/tree/main/Assets/images)
+![Classic Rock Quiz](https://github.com/epc318/online-quiz/blob/main/Assets/images/source_code_ex.PNG)
 
 ## Built With
 * HTML
