@@ -1,86 +1,46 @@
+var questions = [
+  {
+    title: "What instrument does Richard Wakeman Play?",
+    choices: ["Guitar", "Drums", "Keys/Synthesizer", "Bass"],
+    answer: "Keys/Synthesizer"
+},
 
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+  {
+    title: "What year did Neil Young release his debut solo album?",
+    choices: ["1970", "1985", "1968", "1973"],
+    answer: "1968"
+},
 
-// Assigned variables
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowercase = "abcdefghijklmnopqrstuvwxyz";
-var numbers = "0123456789";
-var specialchar = "!@,#$%&*=|-{}_();:?~`[]/\\+";
-var characterSelection = "";
+  {
+    title: "What College did Walter Becker and Donald Fagen of Steely Dan meet in 1971?",
+    choices: ["Univeristy of Minnesota", "UCLA", "Carthage College", "Bard College"],
+    answer: "Bard College"
+},
 
+    title: "Who was the drummer for Toto?",
+    choices: ["Jeff Pocaro", "John Bonham", "Rick Johnson", "Don Henley"],
+    answer: "Jeff Pocaro"
+},
 
-// creating/defining generatePassword function
-function generatePassword() {
-//Start user prompt process/get the necessary dasta for random gen
-var endResult = "";
+  {
+    title: "When were the Eagles formed",
+    choices: ["1969", "1971", "1975", "1965"],
+    answer: "1971"
+},
 
-//1. prompt the user for password criteria
-var promptStart = window.confirm('Would You Like Generate a password?');
+    title: "Who is the vocalist for Creedance Clearwater Revival",
+    choices: ["Mick Jagger", "Steve Lukather", "John Fogerty", "Byron Lee"],
+    answer: "John Fogerty"
+},
 
-  // if user picks "cancel", confirm and refresh page to start
-  if (promptStart === false) {
-    var confirmSkip = window.confirm("Are you sure?");
-  if (confirmSkip) {
-  return "Bye Bye!";
-  }
- } 
+    title: "What was the best seeling album of 1972",
+    choices: ["Harvest (Neil Young)", "The Rise and Fall of Ziggy Stardust and Spiders from Mars (David Bowie)", "Close to the Edge (Yes)", "Honky Chateau (Elton John)"],
+    answer: "Harvest (Neil Young)"
+},
 
-// a. password length between 8 and 128 and validating its a number within that range
-var promptLength = prompt("How many characters would you like your password to be? (Must be 8 - 128)");
-  if(isNaN(promptLength)){
-    alert("You must enter a whole number!");
-  return generatePassword()
-  }
-  if(promptLength<8 || promptLength> 128){
-    alert("Invalid number! Please choose numbers between 8 - 128.");
-  return generatePassword()
-  }
-    
-// b. include lowercase, uppercase, numeric, or special characters?
-var promptUpper = confirm("Would you like to include uppercase letters?");
-var promptLower = confirm("Would you like to include lowercase letters?");
-var promptNumbers = confirm("Would you like to include numerical values?");
-var promptSpecial = confirm("Would you like to include any special characters?");
+    title: "What brand of drums did John Bonham prefer",
+    choices: ["Mapex", "Yamaha", "Ludwig", "Gretsch"],
+    answer: "Ludwig"
+},
 
-// b2. validate input
-  if(!promptUpper&&!promptLower&&!promptNumbers&&!promptSpecial){
-    alert("You must choose at least 1 character type!");
-  return generatePassword()
-  }
-
-// 3. generate password based on criteria
-  if(promptUpper){
-    characterSelection += uppercase
-  }
-  if(promptLower){
-    characterSelection += lowercase
-  }
-
-  if(promptNumbers) {
-    characterSelection += numbers
-  }
-
-  if(promptSpecial) {
-    characterSelection += specialchar
-  }
-
-  for (var i = 0; i < promptLength; i++) {
-  endResult += characterSelection.charAt(Math.floor(Math.random() * characterSelection.length));
-  }
-  return endResult;
-
-}
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+];
