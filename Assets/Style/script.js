@@ -75,3 +75,24 @@ startInt.addEventListener("click", function () {
   }
   render(quizIndex);
 });
+
+function render(quizIndex) {
+
+  var ulEl = document.createElement("ul");
+  quizQuestions.innerHTML = "";
+  ulEl.innerHTML = "";
+
+  for (var i = 0; i < quiz.length; i++) {
+      var titlePrompt = quiz[quizIndex].title;
+      var choicePrompt = quiz[quizIndex].choices;
+      quizQuestions.textContent = titlePrompt;
+  }
+
+  choicePrompt.forEach(function (newItem) {
+      var listChoices = document.createElement("li");
+      listChoices.textContent = newItem;
+      quizQuestions.appendChild(ulEl);
+      ulEl.appendChild(listChoices);
+      listChoices.addEventListener("click", (compare));
+  })
+}
