@@ -1,48 +1,50 @@
 //created variable for question array
 var questions = [
-  {
-    title: "What instrument does Richard Wakeman Play?",
-    choices: ["Guitar", "Drums", "Keys/Synthesizer", "Bass"],
-    answer: "Keys/Synthesizer"
-},
+    {
+      title: "What instrument does Richard Wakeman Play?",
+      choices: ["Guitar", "Drums", "Keys/Synthesizer", "Bass"],
+      answer: "Keys/Synthesizer"
+  },
 
-  {
-    title: "What year did Neil Young release his debut solo album?",
-    choices: ["1970", "1985", "1968", "1973"],
-    answer: "1968"
-},
+    {
+      title: "What year did Neil Young release his debut solo album?",
+      choices: ["1970", "1985", "1968", "1973"],
+      answer: "1968"
+  },
 
-  {
-    title: "What College did Walter Becker and Donald Fagen of Steely Dan meet in 1971?",
-    choices: ["Univeristy of Minnesota", "UCLA", "Carthage College", "Bard College"],
-    answer: "Bard College"
-},
+    {
+      title: "What College did Walter Becker and Donald Fagen of Steely Dan meet in 1971?",
+      choices: ["Univeristy of Minnesota", "UCLA", "Carthage College", "Bard College"],
+      answer: "Bard College"
+  },
 
-    title: "Who was the drummer for Toto?",
-    choices: ["Jeff Pocaro", "John Bonham", "Rick Johnson", "Don Henley"],
-    answer: "Jeff Pocaro"
-},
+    {
+      title: "Who was the drummer for Toto?",
+      choices: ["Jeff Pocaro", "John Bonham", "Rick Johnson", "Don Henley"],
+      answer: "Jeff Pocaro"
+  },
 
-  {
-    title: "When were the Eagles formed",
-    choices: ["1969", "1971", "1975", "1965"],
-    answer: "1971"
-},
+    {
+      title: "When were the Eagles formed",
+      choices: ["1969", "1971", "1975", "1965"],
+      answer: "1971"
+  },
 
-    title: "Who is the vocalist for Creedance Clearwater Revival",
-    choices: ["Mick Jagger", "Steve Lukather", "John Fogerty", "Byron Lee"],
-    answer: "John Fogerty"
-},
-
-    title: "What was the best seeling album of 1972",
-    choices: ["Harvest (Neil Young)", "The Rise and Fall of Ziggy Stardust and Spiders from Mars (David Bowie)", "Close to the Edge (Yes)", "Honky Chateau (Elton John)"],
-    answer: "Harvest (Neil Young)"
-},
-
-    title: "What brand of drums did John Bonham prefer",
-    choices: ["Mapex", "Yamaha", "Ludwig", "Gretsch"],
-    answer: "Ludwig"
-},
+    {
+      title: "Who is the vocalist for Creedance Clearwater Revival",
+      choices: ["Mick Jagger", "Steve Lukather", "John Fogerty", "Byron Lee"],
+      answer: "John Fogerty"
+  },
+    {
+      title: "What was the best seeling album of 1972",
+      choices: ["Harvest (Neil Young)", "The Rise and Fall of Ziggy Stardust and Spiders from Mars (David Bowie)", "Close to the Edge (Yes)", "Honky Chateau (Elton John)"],
+      answer: "Harvest (Neil Young)"
+  },
+    {
+      title: "What brand of drums did John Bonham prefer",
+      choices: ["Mapex", "Yamaha", "Ludwig", "Gretsch"],
+      answer: "Ludwig"
+  },
 
 ];
 
@@ -62,7 +64,7 @@ var startInt = document.querySelector(".start-btn");
 // click listenter to start timer when button is clicked
 startInt.addEventListener("click", function () {
   if (intervalHold === 0) {
-      intervalHold = setInt(function () {
+      intervalHold = setInterval(function () {
           intervalSecs--;
           timeInt.textContent = "Time:" + intervalSecs;
 
@@ -82,9 +84,9 @@ function render(quizIndex) {
   quizQuestions.innerHTML = "";
   ulEl.innerHTML = "";
 
-  for (var i = 0; i < quiz.length; i++) {
-      var titlePrompt = quiz[quizIndex].title;
-      var choicePrompt = quiz[quizIndex].choices;
+  for (var i = 0; i < questions.length; i++) {
+      var titlePrompt = questions[quizIndex].title;
+      var choicePrompt = questions[quizIndex].choices;
       quizQuestions.textContent = titlePrompt;
   }
 
@@ -106,19 +108,19 @@ function compare(event) {
       var divEl = document.createElement("div");
       divEl.setAttribute("id", "divEl");
 
-      if (userChoice.textContent == quiz[quizIndex].answer) {
+      if (userChoice.textContent == questions[quizIndex].answer) {
           score++;
-          divEl.textContent = "Correct! The answer is: " + quiz[quizIndex].answer;
+          divEl.textContent = "Correct! The answer is: " + questions[quizIndex].answer;
       } else {
           intervalSecs = intervalSecs - intervalPen;
-          divEl.textContent = "Wrong! The correct answer is: " + quiz[quizIndex].answer;
+          divEl.textContent = "Wrong! The correct answer is: " + questions[quizIndex].answer;
       }
   }
   quizIndex++;
 
-  if (quizIndex >= quiz.length) {
+  if (quizIndex >= questions.length) {
       quizEnd();
-      divEl.innerHTML = "Great Job!" + " you got " + score + "/" + quiz.length + " Correct! " + "<br><br>" + "<ul>Quiz Answers: " + " alerts, parenthesis, all of the above, quotes, console log</ul>";
+      divEl.innerHTML = "Great Job!" + " you got " + score + "/" + questions.length + " Correct! " + "<br><br>" + "<ul>Quiz Answers: " + " alerts, parenthesis, all of the above, quotes, console log</ul>";
   } else {
       render(quizIndex);
   }
@@ -140,7 +142,7 @@ function quizEnd() {
 
   quizQuestions.appendChild(pEl);
 
-  if (intervalSeconds >= 0) {
+  if (intervalSecs >= 0) {
       var timeRemaining = intervalSecs;
       var p2El = document.createElement("p");
       clearInterval(intervalHold);
@@ -148,3 +150,51 @@ function quizEnd() {
 
       quizQuestions.appendChild(p2El);
   }
+
+   //make label for highschore input
+   var labelText = document.createElement("label");
+   labelText.setAttribute("id", "labelText");
+   labelText.textContent = "Enter your initals: ";
+
+   quizQuestions.appendChild(labelText);
+
+
+   var inputEl = document.createElement("input");
+   inputEl.setAttribute("type", "text");
+   inputEl.setAttribute("id", "userText");
+   inputEl.textContent = "";
+
+   quizQuestions.appendChild(inputEl);
+
+   var buttonEl = document.createElement("button");
+   buttonEl.setAttribute("type", "submit");
+   buttonEl.setAttribute("id", "submit");
+   buttonEl.textContent = "Submit";
+
+   quizQuestions.appendChild(buttonEl);
+
+   buttonEl.addEventListener("click", function () {
+       var userText = inputEl.value;
+       // console.log(inputEl.value)
+
+       if (userText === null) {
+           // console.log ("no value entered")
+       } else {
+           var score = {
+               userText: userText,
+               score: timeLeft
+           }
+           console.log(score)
+           var storedScore = localStorage.getItem("storedScore")
+           if (storedScore === null) {
+               storedScore = [];
+           } else {
+               storedScore = JSON.parse(storedScore);
+           }
+           storedScore.push(score)
+           localStorage.setItem("storedScore");
+
+           window.location.replace("");
+       };
+   });
+}
