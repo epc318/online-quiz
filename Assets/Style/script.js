@@ -62,13 +62,13 @@ var startInt = document.querySelector(".start-btn");
 // click listenter to start timer when button is clicked
 startInt.addEventListener("click", function () {
   if (intervalHold === 0) {
-      intervalHold = setInterval(function () {
+      intervalHold = setInt(function () {
           intervalSecs--;
           timeInt.textContent = "Time:" + intervalSecs;
 
           if (intervalSecs <= 0) {
-              clearInterval(intervalHold);
-              quizOver();
+              clearInt(intervalHold);
+              quizEnd();
               timeInt.textContent = "Time's up!";
           }
       }, 1000);
@@ -88,11 +88,39 @@ function render(quizIndex) {
       quizQuestions.textContent = titlePrompt;
   }
 
-  choicePrompt.forEach(function (newItem) {
-      var listChoices = document.createElement("li");
-      listChoices.textContent = newItem;
+  choicePrompt.forEach(function (New) {
+      var listChoice = document.createElement("li");
+      listChoice.textContent = New;
       quizQuestions.appendChild(ulEl);
-      ulEl.appendChild(listChoices);
-      listChoices.addEventListener("click", (compare));
+      ulEl.appendChild(listChoice);
+      listChoice.addEventListener("click", (compare));
   })
+}
+
+
+function compare(event) {
+  var userChoice = event.target;
+
+  if (userChoice.matches("li")) {
+
+      var divEl = document.createElement("div");
+      divEl.setAttribute("id", "divEl");
+
+      if (userChoice.textContent == quiz[quizIndex].answer) {
+          score++;
+          divEl.textContent = "Correct! The answer is: " + quiz[quizIndex].answer;
+      } else {
+          intervalSecs = intervalSecs - intervalPen;
+          divEl.textContent = "Wrong! The correct answer is: " + quiz[quizIndex].answer;
+      }
+  }
+  quizIndex++;
+
+  if (quizIndex >= quiz.length) {
+      quizEnd();
+      divEl.innerHTML = "Great Job!" + " you got " + score + "/" + quiz.length + " Correct! " + "<br><br>" + "<ul>Quiz Answers: " + " alerts, parenthesis, all of the above, quotes, console log</ul>";
+  } else {
+      render(quizIndex);
+  }
+  quizQuestions.appendChild(divEl);
 }
