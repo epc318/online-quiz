@@ -1,4 +1,4 @@
-# online-quiz
+# Classic Rock Quiz
 
 ## Purpose
 This repository contains the HTML, CSS, JavaScript, and other related elements that compose the quiz site

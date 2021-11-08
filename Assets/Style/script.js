@@ -36,7 +36,7 @@ var questions = [
       answer: "John Fogerty"
   },
     {
-      title: "What was the best seeling album of 1972",
+      title: "What was the best selling album of 1972",
       choices: ["Harvest (Neil Young)", "The Rise and Fall of Ziggy Stardust and Spiders from Mars (David Bowie)", "Close to the Edge (Yes)", "Honky Chateau (Elton John)"],
       answer: "Harvest (Neil Young)"
   },
@@ -120,7 +120,7 @@ function compare(event) {
 
   if (quizIndex >= questions.length) {
       quizEnd();
-      divEl.innerHTML = "Great Job!" + " you got " + score + "/" + questions.length + " Correct! " + "<br><br>" + "<ul>Quiz Answers: " + " alerts, parenthesis, all of the above, quotes, console log</ul>";
+      divEl.innerHTML = "Great Job!" + " you got " + score + "/" + questions.length + " Correct! " + "<br><br>" + "<ul>Quiz Answers: " + "Keys/Synthesizer, 1968, Bard College, Jeff Porcaro, 1971, John Fogerty, Harvest (Neil Young), Ludwig </ul>";
   } else {
       render(quizIndex);
   }
@@ -182,7 +182,7 @@ function quizEnd() {
        } else {
            var score = {
                userText: userText,
-               score: timeLeft
+               score: timeRemaining
            }
            console.log(score)
            var storedScore = localStorage.getItem("storedScore")
@@ -192,9 +192,10 @@ function quizEnd() {
                storedScore = JSON.parse(storedScore);
            }
            storedScore.push(score)
-           localStorage.setItem("storedScore");
+           var scoreNew = JSON.stringify(storedScore);
+           localStorage.setItem("storedScore", scoreNew);
 
-           window.location.replace("");
+           window.location.replace("index2.html");
        };
    });
 }
