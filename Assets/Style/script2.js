@@ -13,10 +13,10 @@ scoresStored = JSON.parse(scoresStored);
 
 if (scoresStored !== null) {
 
-    for (var i = 0; i < scores.length; i++) {
+    for (var i = 0; i < scoresStored.length; i++) {
 
         var liElement = document.createElement("li");
-        liElement.textContent = scoresStored[i].userInput + " " + scoresStored[i].score;
+        liElement.textContent = scoresStored[i].userInput + " " + scoresStored[i].scores;
         console.log(liElement)
         scores.appendChild(liElement);
     }
