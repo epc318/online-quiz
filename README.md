@@ -7,10 +7,10 @@ This repository contains the HTML, CSS, JavaScript, and other related elements t
 To quiz the user on their classic rock knowledge.
 
 #### Live Website URL
-
+https://epc318.github.io/online-quiz/
 
 ## Source Code Example:
-![Classic Rock Quiz]()
+![Classic Rock Quiz](https://github.com/epc318/online-quiz/tree/main/Assets/images)
 
 ## Built With
 * HTML
